@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(222, 84%, 4.9%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(222, 84%, 4.9%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(222, 84%, 4.9%);
+  --primary: hsl(222, 47%, 11%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(210, 40%, 96%);
+  --secondary-foreground: hsl(222, 84%, 4.9%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215, 16%, 47%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(222, 84%, 4.9%);
+  --destructive: hsl(0, 84%, 37%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --ring: hsl(222, 84%, 4.9%);
+  --radius: 0.75rem;
+  
+  /* Enhanced Barbershop Brand Colors */
+  --barbershop-dark: hsl(217, 33%, 17%);
+  --barbershop-medium: hsl(213, 27%, 25%);
+  --barbershop-red: hsl(0, 80%, 43%);     /* Refined primary red */
+  --barbershop-red-600: hsl(0, 80%, 40%); /* Deeper red for better contrast */
+  --barbershop-red-700: hsl(0, 80%, 35%); /* Hover state red */
+  --barbershop-red-800: hsl(0, 80%, 30%); /* Active/pressed state */
+  --barbershop-red-100: hsl(0, 86%, 94%); /* Light red for backgrounds */
+  --barbershop-light: hsl(220, 14%, 96%);
+  
+  /* Neutral Palette */
+  --ink: hsl(220, 9%, 11%);         /* Primary text - softer black */
+  --muted-text: hsl(215, 16%, 47%); /* Secondary text */
+  --line: hsl(214, 32%, 91%);       /* Borders */
+  --surface: hsl(0, 0%, 100%);      /* Cards/backgrounds */
+  --surface-alt: hsl(210, 20%, 98%);/* Alternate sections */
+  
+  /* Semantic Colors */
+  --success: hsl(142, 71%, 45%);
+  --warning: hsl(38, 92%, 50%);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --background: hsl(222, 84%, 4.9%);
+  --foreground: hsl(210, 40%, 98%);
+  --card: hsl(222, 84%, 4.9%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --popover: hsl(222, 84%, 4.9%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --primary: hsl(210, 40%, 98%);
+  --primary-foreground: hsl(222, 47%, 11%);
+  --secondary: hsl(217, 32%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 32%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --accent: hsl(217, 32%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 32%, 17%);
+  --input: hsl(217, 32%, 17%);
+  --ring: hsl(212, 72%, 59%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom barbershop utility classes */
+.bg-barbershop-dark {
+  background-color: var(--barbershop-dark);
+}
+
+.bg-barbershop-medium {
+  background-color: var(--barbershop-medium);
+}
+
+.bg-barbershop-red {
+  background-color: var(--barbershop-red);
+}
+
+.bg-barbershop-light {
+  background-color: var(--barbershop-light);
+}
+
+.text-barbershop-dark {
+  color: var(--barbershop-dark);
+}
+
+.text-barbershop-red {
+  color: var(--barbershop-red);
+}
+
+.border-barbershop-red {
+  border-color: var(--barbershop-red);
+}
+
+.hover\:bg-red-700:hover {
+  background-color: hsl(0, 73%, 35%);
+}
+
+.hover\:text-barbershop-red:hover {
+  color: var(--barbershop-red);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+.focus\:ring-barbershop-red:focus {
+  --tw-ring-color: var(--barbershop-red);
+}
+
+/* Animation utilities */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.transform {
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+}
+
+.hover\:scale-110:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+}
+
+.hover\:-translate-y-0\.5:hover {
+  --tw-translate-y: -0.125rem;
+}
+
+/* ========== ENHANCED UI DESIGN SYSTEM ========== */
+
+/* Button Enhancements */
+.btn-enhanced {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary-enhanced {
+  background: var(--barbershop-red);
+  color: white;
+  border: 1px solid var(--barbershop-red);
+}
+
+.btn-primary-enhanced:hover {
+  background: var(--barbershop-red-700);
+  border-color: var(--barbershop-red-700);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary-enhanced:active {
+  background: var(--barbershop-red-800);
+  transform: translateY(0);
+}
+
+.btn-primary-enhanced:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.2);
+}
+
+/* Card Enhancements */
+.card-enhanced {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-enhanced:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--barbershop-red-100);
+}
+
+/* Section Alternating Backgrounds */
+.section-alt {
+  background: var(--surface-alt);
+}
+
+/* Gallery Image Enhancements */
+.gallery-img-enhanced {
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-img-enhanced:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Review Card Improvements */
+.review-card-enhanced {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.review-card-enhanced::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--barbershop-red), var(--barbershop-red-700));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.review-card-enhanced:hover::before {
+  transform: scaleX(1);
+}
+
+.review-card-enhanced:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Hero Section Improvements */
+.hero-enhanced {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-enhanced::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg, 
+    rgba(17, 24, 39, 0.65) 0%,
+    rgba(17, 24, 39, 0.25) 50%,
+    rgba(17, 24, 39, 0.65) 100%
+  );
+}
+
+/* Service Pricing Cards */
+.price-card-enhanced {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.price-card-enhanced:hover {
+  border-color: var(--barbershop-red);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.price-card-enhanced:hover .price-amount {
+  color: var(--barbershop-red);
+}
+
+.price-amount {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--barbershop-dark);
+  transition: color 0.2s ease;
+}
+
+/* Team Member Cards */
+.team-card-enhanced {
+  overflow: hidden;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.team-card-enhanced img {
+  transition: transform 0.3s ease;
+}
+
+.team-card-enhanced:hover img {
+  transform: scale(1.05);
+}
+
+/* Focus States for Accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--barbershop-red);
+  outline-offset: 2px;
+}
+
+/* Smooth Transitions for Interactive Elements */
+a, button, input, textarea, .card, .btn {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Typography Improvements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--barbershop-dark);
+  line-height: 1.2;
+}
+
+p {
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.text-muted {
+  color: var(--muted-text);
+}
+
+/* Loading States */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-alt) 25%,
+    var(--line) 50%,
+    var(--surface-alt) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Mobile Responsive Enhancements */
+@media (max-width: 768px) {
+  .btn-enhanced {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.95rem;
+  }
+  
+  .card-enhanced {
+    padding: 1.25rem;
+  }
+  
+  .sticky-cta {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid var(--line);
+    padding: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 50;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .sticky-cta .btn {
+    flex: 1;
+  }
+}

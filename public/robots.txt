@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://2e9f1c97-e3f4-41e7-9881-086be12c171d-00-9fixzhwnj4h1.worf.replit.dev/sitemap.xml
+
+# Disallow search parameters
+Disallow: /*?*utm_source=
+Disallow: /*?*utm_medium=
+Disallow: /*?*utm_campaign=
+Disallow: /*?*gclid=
+Disallow: /*?*fbclid=
+
+# Crawl delay for politeness
+Crawl-delay: 1

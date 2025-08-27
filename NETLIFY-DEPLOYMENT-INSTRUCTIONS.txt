@@ -1,0 +1,46 @@
+NETLIFY DEPLOYMENT INSTRUCTIONS
+================================
+
+To deploy this Lords Barbershop website to Netlify:
+
+1. REPLACE FILES:
+   - Replace "package.json" with "package-netlify.json" (rename it to package.json)
+   - Replace "vite.config.ts" with "vite-netlify.config.ts" (rename it to vite.config.ts)
+
+2. NETLIFY SETTINGS:
+   - Build command: npm run build
+   - Publish directory: dist/public
+   - Node version: 18
+
+3. ENVIRONMENT VARIABLES (Optional):
+   - VITE_GA_MEASUREMENT_ID = your Google Analytics measurement ID
+
+4. FILES TO INCLUDE:
+   ✅ All client/ folder contents (React app)
+   ✅ All shared/ folder contents (shared schemas)
+   ✅ attached_assets/ folder (if you have any assets)
+   ✅ tailwind.config.ts
+   ✅ postcss.config.js
+   ✅ tsconfig.json
+   ✅ components.json
+   ✅ netlify.toml (already configured)
+   ✅ .gitignore
+   ✅ README.md
+
+   ❌ EXCLUDE server/ folder (backend not needed for static site)
+   ❌ EXCLUDE drizzle.config.ts (database not needed)
+
+5. WHAT WORKS:
+   - All pages and routing
+   - Contact forms (uses Netlify Forms)
+   - Book Now buttons (external Booksy links)
+   - Google Analytics (if configured)
+   - All styling and animations
+   - Mobile responsive design
+
+The netlify.toml file is already configured to handle:
+- Client-side routing redirects
+- Build settings
+- Performance optimizations
+
+Just zip all the files (with the replacements from step 1) and deploy to Netlify!

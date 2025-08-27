@@ -1,0 +1,108 @@
+ROLE: Senior Web Dev + Technical SEO. You are editing an ALREADY BUILT website for a local barbershop. DO NOT redesign or change the brand look. Apply the improvements below exactly. Keep current content blocks; only enhance performance, SEO, accessibility, conversion, and structure.
+
+BUSINESS (verbatim)
+- Name: Lord’s Barbershop
+- Address: 3751 Pleasanton Rd, San Antonio, TX 78221, USA
+- Phone: +1 (210) 717-2360
+- Hours: Mon–Sat 9:00 AM–8:00 PM; Sun 9:00 AM–3:00 PM
+- City focus: San Antonio, TX
+- Services: Men’s Haircut, Fade Haircut, Beard Trim/Shape, Classic Razor Shave, Kids’ Haircut
+- Booking URL: [PASTE_BOOKING_URL]
+- Socials: [PASTE_FACEBOOK_URL], [PASTE_INSTAGRAM_URL]
+- IMPORTANT: Do NOT display numeric star ratings anywhere on-site (text-only testimonials OK).
+
+TOPLINE GOAL
+Increase bookings/calls/directions and rank for local intent (“fade haircut san antonio”, “kids haircut san antonio”, “beard trim san antonio”) while passing Core Web Vitals.
+
+A) CONVERSION IMPROVEMENTS (NO LAYOUT REBUILD)
+1) Add a sticky mobile bottom bar (only on <992px): Book • Call • Directions.
+   - Book → [PASTE_BOOKING_URL]
+   - Call → tel:+12107172360
+   - Directions → https://maps.google.com/?q=Lord’s+Barbershop+3751+Pleasanton+Rd+San+Antonio+TX+78221
+   - Provide HTML/CSS/JS and ensure safe-area insets; hide on desktop.
+2) Duplicate primary CTA row (“Book Online”, “Call Now”) after each major section: Hero, Services, Gallery, Team, Testimonials, Contact.
+3) Add a short “Why Us” strip above testimonials: “Same-day fades • Open 7 days • Kid-friendly • Walk-ins when available”.
+
+B) TECHNICAL SEO
+1) Titles/Descriptions:
+   - Home <title>: “Best Haircuts & Beard Care in San Antonio | Lord’s Barbershop” (≤60 chars)
+   - Meta description (~155 chars): “Same-day fades, beard trims & classic shaves. Open 7 days. Book online or call (210) 717-2360. 3751 Pleasanton Rd, San Antonio.”
+   - Ensure 1 H1 only on home; services as H2s.
+2) Canonical on all pages; enforce HTTPS and single host (choose www or non-www) via 301s; consistent trailing slashes.
+3) Create/verify sitemap.xml and robots.txt (link sitemap).
+
+C) LOCAL SEO (Schema + NAP)
+1) Footer NAP exactly as above, matching Google Business Profile format.
+2) Inject JSON-LD Barbershop schema (update domain/og image when known):
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Barbershop",
+ "name":"Lord’s Barbershop",
+ "url":"https://YOUR_DOMAIN/",
+ "image":"https://YOUR_DOMAIN/img/og.jpg",
+ "telephone":"+1-210-717-2360",
+ "address":{"@type":"PostalAddress","streetAddress":"3751 Pleasanton Rd","addressLocality":"San Antonio","addressRegion":"TX","postalCode":"78221","addressCountry":"US"},
+ "openingHoursSpecification":[
+  {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"20:00"},
+  {"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"09:00","closes":"15:00"}],
+ "sameAs":["[PASTE_FACEBOOK_URL]","[PASTE_INSTAGRAM_URL]"]
+}
+</script>
+3) Add FAQ section on home (walk-ins, kids, parking, payments, average time, reschedule) and include FAQPage schema:
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"Do you take walk-ins?","acceptedAnswer":{"@type":"Answer","text":"Yes, when slots are open. Booking online guarantees your time."}},
+ {"@type":"Question","name":"Are kids’ haircuts available?","acceptedAnswer":{"@type":"Answer","text":"Yes—kid-friendly barbers. Earlier hours are usually quieter."}},
+ {"@type":"Question","name":"Where can I park?","acceptedAnswer":{"@type":"Answer","text":"Free parking is available on-site near the entrance."}},
+ {"@type":"Question","name":"What payments do you accept?","acceptedAnswer":{"@type":"Answer","text":"Cash and major cards. Tips welcome in cash or card."}}
+]}
+</script>
+4) DO NOT add AggregateRating unless first-party compliant.
+
+D) LANDING PAGES (keep current design; add these pages + nav links)
+Create and publish 4 SEO pages (600–900 words each, unique meta, 3 FAQs with schema, 1–2 gallery images linked to service):
+- /mens-haircut-san-antonio/
+- /fade-haircut-san-antonio/
+- /beard-trim-san-antonio/
+- /kids-haircut-san-antonio/
+Each page must have: H1 “{Service} in San Antonio”, benefits, what to expect, time & price range, aftercare tips, internal links, top/bottom Book/Call CTAs.
+
+E) PERFORMANCE (CORE WEB VITALS)
+1) Hero image:
+   - Convert to AVIF/WebP (≤250KB), add:
+   <link rel="preload" as="image" href="/img/hero.avif" imagesrcset="/img/hero.avif 1x, /img/hero@2x.avif 2x" fetchpriority="high">
+2) All images: supply width/height or CSS aspect-ratio to prevent CLS; add responsive srcset/sizes; `loading="lazy"` below the fold.
+3) Inline critical CSS (~7–12KB) and defer the rest; `font-display: swap`; preconnect to fonts/CDN.
+4) Defer non-critical JS; remove unused libraries; split bundles. Target: LCP < 2.5s, CLS < 0.05, INP < 200 ms.
+
+F) GALLERY → CONVERSION
+- Keep current photos but add service chips (Fade, Taper, Kids). Each image links to the relevant landing page.
+- If possible, add 1–2 before/after sliders. Ensure alt text is descriptive (“Mid-skin fade with beard lineup”).
+
+G) TRUST, PRICING & POLICIES
+- Add a concise “Pricing from $X” table and show no-show/late policy next to booking CTA.
+- Keep testimonials as short text quotes with names—no stars or numeric ratings.
+
+H) ACCESSIBILITY (WCAG 2.2 AA)
+- Contrast ≥4.5:1; visible :focus styles; “Skip to content” link.
+- All interactive icons get aria-labels; forms use proper <label> with `for`.
+- Forms: input type=tel for phone; add `autocomplete="name tel email"`.
+- Announce validation errors inline and confirm success with a polite message.
+
+I) ANALYTICS & EVENTS
+- Ensure GA4 installed (and Meta Pixel if available).
+- Track: book_click, call_click, directions_click, form_submit. Include eventLabel = {page}:{placement}. Verify in GA4 Realtime.
+
+J) OPEN GRAPH / SOCIAL
+- Add OG/Twitter tags sitewide with a clean 1200×630 image and proper title/description.
+
+K) DELIVERABLES / ACCEPTANCE
+- Provide code changes (HTML/CSS/JS/JSON-LD) and where inserted.
+- Generate the 4 service pages with unique meta + FAQ schema.
+- Publish sitemap + robots; fix canonical and redirects.
+- Ship sticky mobile CTA bar and duplicate CTAs per section.
+- Confirm Lighthouse: Mobile ≥90, Desktop ≥95 and CWV targets met.
+- Provide a short README with how to update hours, prices, and gallery.
+
+BEGIN NOW. Make only these improvements without altering the existing visual design.

@@ -1,0 +1,142 @@
+You are building an SEO-first, single-page (with optional child pages) website for **Lord’s Barbershop** in San Antonio, TX. Goal: dominate “barber shop san antonio”, “fades san antonio”, “beard shaping san antonio”, and related long-tails. Deliver production-ready HTML with Tailwind classes, minimal JS, perfect Core Web Vitals, and complete local SEO schema.
+
+BUSINESS
+- Name: Lord’s Barbershop
+- Address: 3751 Pleasanton Rd, San Antonio, TX 78221
+- Phone: (210) 717-2360
+- Primary CTA (ALL ‘Book Now’): 
+  https://booksy.com/en-us/976657_lords-barbershop_barber-shop_134789_san-antonio?hl=en-US&gei=24CbaN3_JZyxqtsPxdft0QI&rwg_token=ACgRB3dezEwX44YS63spbEAv5HxdlxCyT3kHEMivDdQpOPBwEzKnuIYj50_EATYcCku_hymKmC-F9HDd3w6SfZeZ4-PfGyu6eQ%3D%3D#ba_s=seo
+  (Append UTM to buttons: &utm_source=website&utm_medium=cta&utm_campaign=book_now)
+- Socials (footer icons, open in new tab):
+  IG: https://www.instagram.com/lords_barbershop210/
+  Yelp: https://www.yelp.com/biz/lord-s-barber-shop-san-antonio
+  FB: https://www.facebook.com/pages/The%20Lord%27s%20Barbershop/676322549149665/
+
+STRATEGY (high level)
+- Keep a front-end only stack. Use serverless forms (Netlify Forms/Formspree). Route all bookings to Booksy.
+- Optimize for Local SEO + entity relevance (barber shop, fades, beard shaping, razor shave, Southside San Antonio, Pleasanton Rd, 78221).
+- Build topical authority with a compact “services silo” + a monthly content plan.
+
+SITE STRUCTURE / URLS
+- /  (Home)
+- /services/  (section on SP, but also generate standalone pages for each service)
+  • /services/fade-haircut-san-antonio/
+  • /services/beard-shaping-san-antonio/
+  • /services/razor-shave-san-antonio/
+  • /services/kids-haircut-san-antonio/
+- /gallery/
+- /team/
+- /reviews/
+- /contact/  (contains map, hours, NAP, form)
+Use short, hyphenated, keyworded slugs. Force HTTPS, single canonical (non-www or www—choose one and stick to it).
+
+ON-PAGE SEO (templates)
+- Title (Home): “Lord’s Barbershop | Best Barber Shop in San Antonio for Fades, Beard Shaping & Razor Shaves”
+- Meta Description (Home, ~150–160 chars):
+  “Precision fades, beard shaping, and classic razor shaves on San Antonio’s Southside. View services, gallery, and book now on Booksy.”
+- H1 (one only on each page): “Best Haircuts & Beard Care in San Antonio”
+- Service page title pattern:
+  “{Service} in San Antonio | Lord’s Barbershop (Pleasanton Rd)”
+- Service meta description pattern:
+  “Get expert {Service} on San Antonio’s Southside. Skilled barbers, clean lines, quick booking on Booksy.”
+- Each service page: 400–600 words, include benefits, process, aftercare tips, 4–6 FAQs (FAQPage schema), 1–2 internal links (to Gallery, Team).
+- Internal anchor text: natural, varied (“fade haircut in San Antonio”, “beard shaping specialists”).
+- Image SEO: WebP/AVIF; descriptive file names (fades-san-antonio-01.webp), alt text with intent (“High taper fade haircut in San Antonio barber shop”).
+- CTAs every section: “Book Now” → Booksy (with UTM). Secondary: tel:, Directions (Google Maps).
+
+LOCAL SEO
+- Prominent NAP in header/footer and Contact.
+- Embed Google Map on Contact with driving/parking notes.
+- Add city/neighborhood entities in copy (Southside, Harlandale, Pleasanton Rd).
+- Mark up with LocalBusiness/Barbershop JSON-LD, plus Service and FAQPage on relevant pages.
+- Reviews section: showcase 3–5 quotes; link to Google reviews and Yelp. Add AggregateRating in schema (use safe, truthful values or leave as placeholder to avoid mismatches).
+- Add “sameAs” to schema: Instagram, Yelp, Facebook, Booksy profile if available.
+- Create a lightweight “Directions from {POI}” subsection (optional) to capture “near me” + landmark searches.
+
+TECHNICAL SEO (deliverables)
+- Core Web Vitals budgets: LCP ≤ 2.0s, CLS ≤ 0.08, INP ≤ 200ms.
+- Tailwind + tiny JS (Lenis smooth scroll; AOS-style fades 180–240ms). No heavy frameworks.
+- Preload hero image; lazy-load below-the-fold; responsive images (srcset, sizes).
+- Fonts: system stack or one display font; font-display: swap.
+- <link rel="canonical"> on every page. Self-referencing canonicals.
+- robots.txt (allow all; disallow /admin if any). sitemap.xml auto-generated (include service pages).
+- Open Graph + Twitter Card: use hero image (1200×630) with branding.
+- Breadcrumbs component with BreadcrumbList schema on service pages.
+- 301 redirects: http→https, trailing-slash preference, single host.
+- Favicon + maskable PWA icon; theme-color meta.
+- Accessibility: WCAG AA, focus-visible styles, skip-to-content link, ARIA labels for nav, forms, social.
+- Analytics: GA4 + events (click_book_now, click_call, click_directions). Verify site in GSC & Bing.
+
+SCHEMA (JSON-LD blocks)
+- On Home: Organization + LocalBusiness (Barbershop)
+  {
+    "@context":"https://schema.org",
+    "@type":"Barbershop",
+    "name":"Lord’s Barbershop",
+    "image":"[ABSOLUTE_URL_TO_HERO_IMAGE]",
+    "url":"[SITE_CANONICAL_URL]",
+    "telephone":"+1-210-717-2360",
+    "priceRange":"$$",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"3751 Pleasanton Rd",
+      "addressLocality":"San Antonio",
+      "addressRegion":"TX",
+      "postalCode":"78221",
+      "addressCountry":"US"
+    },
+    "geo":{"@type":"GeoCoordinates","latitude":"[29.36xx]","longitude":"[-98.49xx]"},
+    "sameAs":[
+      "https://www.instagram.com/lords_barbershop210/",
+      "https://www.yelp.com/biz/lord-s-barber-shop-san-antonio",
+      "https://www.facebook.com/pages/The%20Lord%27s%20Barbershop/676322549149665/"
+    ],
+    "openingHoursSpecification":[
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"20:00"}
+    ]
+  }
+- On each service page: add “Service” schema with name, areaServed (“San Antonio, TX”), provider as sameAs above.
+- FAQs: use FAQPage schema (2–6 Q/As).
+
+INTERNAL LINKING / SILO
+- Home → Services grid (links to each service page)
+- Each service page → Gallery, Team, Contact
+- Gallery images → related service pages
+- Sticky header with anchors; footer repeats key links + social icons (Instagram, Yelp, Facebook).
+
+CONTENT ENGINE (12-week plan)
+- Blog 2×/month (600–900 words) targeting “how-to” + local intent:
+  1) “Best Fade Haircuts in San Antonio: Styles, Maintenance & Face Shapes”
+  2) “Beard Care in Texas Heat: Hydration & Shape Tips (Southside Guide)”
+  3) “Kids’ First Haircut in San Antonio: What Parents Should Know”
+  4) “Taper vs. Low Fade vs. Skin Fade—Which Works for You?”
+- Each post: intro hook, scannable H2s, 1–2 internal links, 1 external authoritative source, CTA to Booksy.
+- Add one linkable asset/quarter (e.g., “San Antonio Men’s Grooming Guide” PDF) to earn backlinks.
+
+BACKLINK BUILDING (white-hat, local first)
+- Citations: Ensure NAP consistency on Google Business Profile, Yelp, Facebook, Instagram bio, Apple Maps, Bing Places, Booksy, Nextdoor, YellowPages, MapQuest.
+- PR/Community: Sponsor a local youth team or event; request links from organizers and news roundups.
+- Partnerships: Cross-promo with nearby businesses (gyms, clothing stores, coffee shops) for mutual blog mentions.
+- “Before/After” features on local lifestyle blogs; pitch “Southside Fades Trend” story.
+- Unlinked mentions: set monthly brand searches; request link where shop is named without a link.
+- Social proof: encourage reviews on Google/Yelp; reply to all reviews; embed best ones on site.
+
+FOOTER SOCIAL ICONS (visual + a11y)
+- 24px circular monochrome icons; hover → Accent Red, slight scale (1.03), translate-y-0.5, 180ms.
+- sr-only labels (“Instagram”, “Yelp”, “Facebook”). Open in new tab with rel="noopener".
+
+PERFORMANCE & QA CHECKLIST
+- Lighthouse ≥ 95 for Performance/SEO/Best Practices/Accessibility.
+- Images ≤ 200KB (hero can be larger but preloaded).
+- CLS safeguards: fixed height placeholders for media; avoid layout shifts in nav.
+- Test mobile first; tap targets ≥ 44px; blur-on-scroll sticky nav.
+
+COPY GUIDELINES
+- Tone: confident, friendly, expert. Avoid keyword stuffing; use synonyms (tapers, line-ups, fades).
+- Include city + service naturally in H2/H3 once; sprinkle in body copy.
+- CTA frequency: one primary every viewport height.
+
+DELIVERABLES
+- Pages + sections above, with titles/meta, schema, OG/Twitter tags, robots.txt, sitemap.xml.
+- GA4 events for key CTAs; GSC & Bing verification tags.
+- README: domain, deploy steps (Netlify/Cloudflare Pages), how to edit hours and add new photos.
